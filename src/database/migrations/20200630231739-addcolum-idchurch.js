@@ -7,15 +7,15 @@ module.exports = {
       'church_id',
       {
         type: Sequelize.INTEGER,
-        references: { model: 'church', key: 'id'},
+        references: { model: 'churches', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false
+        allowNull: true
       }
     )
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     return queryInterface.removeColumn('leaders', 'church_id');
   }
 };

@@ -28,6 +28,7 @@ class SessionController{
     console.log('Entrou')
     
     const { id , name } = user
+    req.userId = id
 
     return res.json({
       user: {

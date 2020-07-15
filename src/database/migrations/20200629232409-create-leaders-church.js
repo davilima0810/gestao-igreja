@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => { 
-    return queryInterface.createTable('minister', { 
+    return queryInterface.createTable('ministers', { 
       id:  {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -18,15 +18,23 @@ module.exports = {
       },
       church_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'church', key: 'id'},
+        references: { model: 'churches', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: false
       },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false
+      }
     });
   },
 
   down: async (queryInterface) => {
-    return queryInterface.dropTable('minister');
+    return queryInterface.dropTable('ministers');
   }
 };
